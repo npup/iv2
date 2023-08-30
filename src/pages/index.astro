@@ -1,0 +1,13 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+import PageUpdateInfo from "~/components/PageUpdateInfo.astro";
+
+const page = await getEntry("pages", "home");
+const { Content } = await page.render();
+---
+
+<Layout title="Välkommen till Instrumentverkstan" metaDescr="startsida">
+    <Content />
+    <PageUpdateInfo date={page.data.editDate} />
+</Layout>

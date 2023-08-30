@@ -1,0 +1,10 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import PageUpdateInfo from "~/components/PageUpdateInfo.astro";
+import {Content, frontmatter } from "~/content/pages/butik/sålt/index.mdx";
+---
+
+<Layout title="Tidigare sålt" page="/butik" metaDescr="butik försäljning sålt">
+    <Content  />
+    <PageUpdateInfo date={frontmatter.editDate} />
+</Layout>

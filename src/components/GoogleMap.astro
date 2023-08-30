@@ -1,0 +1,29 @@
+---
+import { config } from "../site-data/config";
+---
+
+<div class="google-map-wrapper">
+    <iframe
+        title="Google map"
+        class="google-map-iframe"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src={config.googleMapHittaHit}
+    />
+</div>
+
+<style>
+    @media (max-width: 600px) {
+        :global(.google-map-wrapper) {
+            text-align: center;
+        }
+    }
+
+    :global(.google-map-iframe) {
+        max-width: 600px;
+        width: calc(100% - 1em);
+        border: none;
+        height: 400px;
+    }
+</style>

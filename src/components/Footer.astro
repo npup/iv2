@@ -1,0 +1,54 @@
+---
+interface Props {
+
+}
+
+import { config } from "../site-data/config";
+
+---
+
+<footer>
+    <hr />
+    <div>
+        <span class="label">Besöksadress: </span>
+        <a href={config.googleMapBesoksAdress}>{config.besoksAdress}</a>
+    </div>
+    <div>
+        <span class="label">E-post: </span>
+        <a href={`mailto:${config.email}`}>{config.email}</a>
+    </div>
+    <div>
+        <span class="label">Mobil: </span>
+        <a href={`tel:${config.telefonNoSpaces}`}>{config.telefon}</a>
+    </div>
+</footer>
+
+<style>
+    .label {
+        display: none;
+    }
+    footer {
+        text-align: center;
+        line-height: 2;
+    }
+    footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 12px;
+    }
+
+    footer a {
+        font-weight: bold;
+    }
+
+    @media (min-width: 480px) {
+        .label {
+            display: initial;
+        }
+        footer {
+            padding: 12px 0;
+        }
+    }
+</style>

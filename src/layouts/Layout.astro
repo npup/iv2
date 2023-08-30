@@ -1,0 +1,91 @@
+--- 
+interface Props {
+	title: string;
+    page?: string;
+    metaDescr?: string;
+}
+
+import "css-to-go";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { config } from "~/site-data/config";
+
+const { title: pageTitle, page = "", metaDescr: pageMetaDescr = "" } = Astro.props;
+
+const siteName = "instrumentverkstan.se";
+const title = `${ pageTitle } | ${siteName}`;
+---
+
+<!DOCTYPE html>
+<html lang="sv">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{title}</title>
+        <meta name="description" content={`${config.siteMetaDescr} ${pageMetaDescr}`} />
+
+        <!-- OG -->
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="sv_SE" />
+        <meta property="og:card" content="summary" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={config.socialCardDescr} />
+        <meta property="og:image" content="/assets/images/social-card-image.jpg" />
+    </head>
+    <body class="ctg-root ctg-container ctg-theme--light">
+        <Header page={page}/>
+        <main>
+            <h2>{pageTitle}</h2>
+            <slot />
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style is:global>
+    body {
+    min-width: 360px;
+
+    /**
+    * Extra definierade färger och dylikt
+    */
+
+    --color-IV_RED: #c44;
+    --color-IV_WHITE: #f8f8f8;
+    --color-IV_BRIGHT_RED: #f22;
+    --color-IV_BLACK: #000;
+    --color-IV_DARK_GRAY: #222;
+
+    /**
+    * The imagerow images
+    */
+    --box-shadow-IV_IMAGEROW_IMAGE_FOCUS: 0px 0px 3px 2px #000;
+    --transform-IV_IMAGEROW_IMAGE_HOVER: scale(1.02);
+    --borderradius_IV_IMAGEROW_IMAGE: 3px;
+    --transition_IV_IMAGEROW_IMAGE: transform 0.1s ease-in-out;
+
+    /**
+    * The opened modal (images)
+    */
+    --box-shadow-IV_MODAL: 0px 0px 6px 1px silver;
+    --bgcolor-IV_MODAL_BACKDROP: var(--color-IV_BLACK);
+    --opacity-IV_MODAL_BACKDROP: 0.85;
+
+    --color-IV_MODAL_CLOSE: var(--color-IV_WHITE);
+    --bgcolor-IV_MODAL_CLOSE: var(--color-IV_RED);
+
+    --color-IV_MODAL_CONTENT: var(--color-IV_WHITE);
+    --bgcolor-IV_MODAL_CONTENT: var(--color-IV_DARK_GRAY);
+}
+main {
+        padding: 1rem;
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+</style>

@@ -1,0 +1,17 @@
+---
+import ImageRow from "~/components/ImageRow.svelte";
+import type { InstrumentImage } from "~/types";
+
+
+interface Props {
+    images?: InstrumentImage[];
+}
+const { images = [] } = Astro.props;
+
+---
+
+{
+    images && images.length ? 
+        <ImageRow client:load images={images} justify="center" height={200} forceShowEvenOnSmallScreen /> :
+        null
+}

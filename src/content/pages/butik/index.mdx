@@ -1,0 +1,33 @@
+---
+editDate: 2023-05-10
+---
+import { instruments } from "~/data/instruments";
+import InstrumentsList from "~/components/InstrumentsList.astro";
+
+Här är tänkt att finnas skoj och intressanta lurar i optimerat skick till
+försäljning. Dock - tiden, tiden...  Nu är det snart två år sedan jag kunde sätta
+av tid till egna godbitar väntande i vrårna.  P.g.a. bokningstryck och akutinlämningar
+i verkstan liksom mycken kaptenstillvaro har romantiken i Tyresö inte blivit till
+de väntande instrumentens fromma.  Ursäkter och plattpudling till er som väntat
+på att något ska hända!
+
+Just nu finns alltså sparsamt till försäljning:
+
+<InstrumentsList instruments={instruments} basePath="/butik/till-salu"
+    filter={(instrument) => !instrument.data.sold}
+/>
+
+Det finns även en lista över [tidigare sålda instrument](/butik/sålt).
+
+
+## Kommande
+
+Långt bort i pipeline: Selmer SBA tensax-50, Conn Mseries tensax-35, Buescher Aristocrat
+tensax-39, Selmer mod22 barisax-25, Conn Chuberry altsax, Cannonball Brute tensax,
+P. Hammig Cflöjt, Selmer eng horn....
+
+Jag vet att SBA-tenoren har rönt många mail/textningar/telefon men den är inte på
+G i närtid tyvärr!
+
+
+

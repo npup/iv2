@@ -1,0 +1,9 @@
+import { instruments } from "~/data/instruments";
+import InstrumentsList from "~/components/InstrumentsList.astro";
+
+Här följer ett urval av tidigare sålda instrument. [Tillbaka till butik](/butik)
+
+<InstrumentsList instruments={instruments} basePath="/butik/sålt"
+    filter={(instrument) => instrument.data.sold}
+/>
+

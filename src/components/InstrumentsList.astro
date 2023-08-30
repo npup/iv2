@@ -1,0 +1,40 @@
+---
+import { type Instrument } from "~/types";
+    
+import Currency from "~/components/Currency.astro";
+
+interface Props {
+    basePath?: string;
+    instruments?: Instrument[];
+    noLinks?: boolean;
+    filter?: typeof defaultInstrumentFilter;
+}
+const { basePath = "", instruments = [], noLinks = false, filter = defaultInstrumentFilter } = Astro.props;
+
+function defaultInstrumentFilter(instrument: Instrument) {
+    return true;
+}
+const availableInstruments = instruments.filter(filter);
+---
+
+<ul>
+    {availableInstruments.map((instrument) => {
+        return (
+            <li>
+                {
+                    (noLinks || instrument.data.noLink) ?
+                        instrument.data.name :
+                        <a href={`${basePath}/${instrument.slug}`}>{instrument.data.name}</a>
+                }
+
+                {instrument.data.descrShort ? ` - ${instrument.data.descrShort}.` : ""}
+
+                {instrument.data.sold ? null : (
+                    <>
+                        &nbsp;<Currency amount={instrument.data.price} />.
+                    </>
+                )}
+            </li>
+        );
+    })}
+</ul>

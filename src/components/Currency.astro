@@ -1,0 +1,21 @@
+---
+interface Props {
+    amount?: number;
+}
+
+const { amount = 0 } = Astro.props;
+    
+const fmt = new Intl.NumberFormat("sv-SE", {
+    style: "currency",
+    currency: "SEK",
+    maximumFractionDigits: 0,
+});
+---
+
+<span>{fmt.format(amount)}</span>
+
+<style>
+    span {
+        white-space: nowrap;
+    }
+</style>

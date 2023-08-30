@@ -1,0 +1,35 @@
+---
+interface Props {
+    date: Date | string;
+}
+
+
+let str = Astro.props.date;
+if (typeof str != "string") {
+    str = (Astro.props.date as Date)?.toLocaleDateString("sv-SE");
+}
+
+const value = str?.replace(/T.+$/, "");
+---
+
+{value != null && (
+        <div>
+            Uppdaterat <span>{value}</span>
+        </div>
+    )
+}
+
+<style>
+    div {
+        font-style: italic;
+        font-size: 0.8em;
+        position: absolute;
+        bottom: -1em;
+        right: 1em;
+    }
+
+    span {
+        font-family: "Courier New", Courier, monospace;
+        font-size: 1em;
+    }
+</style>

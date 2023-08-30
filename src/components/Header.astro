@@ -1,0 +1,113 @@
+---
+interface Props {
+    page?: string;
+}
+
+
+const $page = {
+    url: {
+        pathname: `${Astro.props.page}`,
+    },
+};
+
+---
+
+<header>
+    <h1><a href="/">Instrumentverkstan.se</a></h1>
+    <nav>
+        <ul>
+            <li aria-current={$page.url.pathname === "/service" ? "page" : undefined}>
+                <a href="/service">Service</a>
+            </li>
+            <li aria-current={$page.url.pathname.startsWith("/butik") ? "page" : undefined}>
+                <a href="/butik">Butik</a>
+            </li>
+            <li aria-current={$page.url.pathname.startsWith("/kontakt") ? "page" : undefined}>
+                <a href="/kontakt">Kontakt</a>
+            </li>
+            <li aria-current={$page.url.pathname.startsWith("/hitta-hit") ? "page" : undefined}>
+                <a href="/hitta-hit">Hitta <span class="hitta-hit-full">&nbsp;hit</span></a>
+            </li>
+        </ul>
+    </nav>
+
+</header>
+
+<style>
+    h1 {
+        font-size: 1.6em;
+    }
+    h1 a {
+        text-decoration: none;
+        color: inherit;
+        font-size: inherit;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    nav ul {
+        position: relative;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        gap: 1em;
+    }
+
+    nav li {
+        position: relative;
+        height: 100%;
+        padding-left: 0.15rem;
+        padding-right: 0.15rem;
+        margin: 0;
+        padding: 0.25rem 0.5rem;
+    }
+    nav li[aria-current="page"] a {
+        border-bottom: 2px solid var(--color-IV_BRIGHT_RED);
+    }
+
+    nav a {
+        display: flex;
+        height: 100%;
+        align-items: center;
+        padding: 0 0.2rem;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+    }
+    nav a:hover {
+        color: inherit;
+    }
+
+    /** dölj lång label för hitta-hit-länken **/
+    .hitta-hit-full {
+        display: none;
+    }
+    @media (min-width: 600px) {
+        h1 {
+            font-size: 2em;
+        }
+        h1 a {
+            font-size: inherit;
+        }
+        /** visa lång label för hitta-hit-länken **/
+        .hitta-hit-full {
+            display: inherit;
+        }
+        nav a {
+            font-size: inherit;
+        }
+    }
+
+    @media not (hover: hover) {
+        nav li:hover {
+            background-color: transparent;
+        }
+    }
+</style>

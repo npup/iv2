@@ -1,0 +1,21 @@
+{
+  "name": "instrumentverkstan.se",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^1.0.0-rc.2",
+    "@astrojs/svelte": "^4.0.0-rc.3",
+    "astro": "^3.0.0-rc.11",
+    "css-to-go": "^1.7.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-basic-ssl": "^1.0.1"
+  }
+}

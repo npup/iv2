@@ -1,0 +1,22 @@
+---
+import { getEntryBySlug } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+import InstrumentDetail from "~/components/InstrumentDetail.astro";
+import { instruments } from "~/data/instruments";
+
+export function getStaticPaths() {
+    return instruments.map(instrument => ({
+        params: { slug: instrument.slug }
+    }));
+}
+
+const { slug } = Astro.params;
+const instrument = await getEntryBySlug("instruments", slug ?? "");
+if (!instrument) {
+    throw Error(`Did not find instrument for slug: ${slug}`);
+}
+---
+<Layout title="Såld" page="/butik" metaDescr="butik försäljning såld">
+    <InstrumentDetail instrument={instrument} />
+    <a href="/butik/sålt">Tillbaka till sålda</a>
+</Layout>

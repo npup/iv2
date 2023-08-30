@@ -1,0 +1,69 @@
+---
+import type { Instrument, InstrumentImage } from "~/types";
+import Currency from "~/components/Currency.astro";
+import InstrumentImages from "./InstrumentImages.astro";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+    instrument: Instrument;
+}
+
+const { instrument } = Astro.props;
+
+async function loadInstrumentImage([imgName, title]: [string, string]): Promise<InstrumentImage> {    
+    const suffix = imgName.replace(/^.+(\..+)$/, "$1");
+    const imgNameNoSuffix = imgName.slice(0, -suffix.length);
+    let astroAssetImport;
+    switch (suffix) {
+        case ".jpg":
+            astroAssetImport = await import(`../content/instruments/images/${imgNameNoSuffix}.jpg`);
+            break;
+        case ".jpeg":
+            astroAssetImport = await import(`../assets/images/content/instruments/${imgNameNoSuffix}.jpeg`);
+            break;
+        case ".png":
+            astroAssetImport = await import(`../assets/images/content/instruments/${imgNameNoSuffix}.png`);
+            break;
+        case ".gif":
+            astroAssetImport = await import(`../assets/images/content/instruments/${imgNameNoSuffix}.gif`);
+            break;
+    }
+    const { default: astroAssetImage }: { default: ImageMetadata } = astroAssetImport;
+    return { ...astroAssetImage, title };
+}
+
+const images = await Promise.all((instrument.data.images ?? []).map(loadInstrumentImage));
+
+---
+
+<article>
+    <h1>
+        { instrument.data.name }
+        {
+            instrument.data.descrShort ? `, ${instrument.data.descrShort}` : null
+        }
+    </h1>
+    
+
+    {
+        instrument.data.descrLong ?
+            <p> {instrument.data.descrLong}</p> :
+            null
+    }
+
+    <InstrumentImages images={images} />
+
+    {
+        (instrument.data.price != null && !instrument.data.sold) ?
+            <p>
+                Pris: <Currency amount={instrument.data.price} />.
+            </p> :
+            null
+    }
+</article>
+
+<style>
+    h1 {
+        font-size: 98%;
+    }
+</style>

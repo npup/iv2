@@ -1,0 +1,39 @@
+---
+interface Props {
+    type: "post" | "besök";
+}
+import { config } from "~/site-data/config.ts";
+---
+
+<article>
+    {
+        Astro.props.type =="besök" ?
+        <>
+            <h3>Besöksaddress</h3>
+            <p>
+                Peter Törnqvist Instrumentverkstad<br />
+                <a href={config.googleMapBesoksAdress}>{config.besoksAdress}</a>
+            </p>
+        </> :
+        <>
+            <h3>Postadress</h3>
+            <em>(större försändelser skickas hit!)</em>
+            <p>
+                Peter Törnqvist Instrumentverkstad<br />
+                <a href={config.googleMapPostAdress}>{config.postAdress}</a><br />
+                Mobil: <a href="tel:{config.telefonNoSpaces}">{config.telefon}</a><br />
+                E-post: <a href="mailto:{config.email}">{config.email}</a>
+            </p>
+        </>
+    }
+</article>
+
+<style>
+    article {
+        margin-top: 2em;
+    }
+    p {
+        line-height: 2;
+        margin-bottom: 3em;
+    }
+</style>

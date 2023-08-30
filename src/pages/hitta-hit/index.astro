@@ -1,0 +1,13 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "~/layouts/Layout.astro";
+import PageUpdateInfo from "~/components/PageUpdateInfo.astro";
+
+const page = await getEntry("pages", "hitta-hit");
+const { Content } = await page.render();
+---
+
+<Layout title="Hitta hit" page="/hitta-hit" metaDescr="hitta hit karta adress">
+    <Content />
+    <PageUpdateInfo date={page.data.editDate} />
+</Layout>
