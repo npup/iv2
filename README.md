@@ -86,7 +86,7 @@ postadressen och "hitta hit"-kartan).
 
 #### Instrument
 
-Instrument till försäljning/tidigare sålda instrument är har en egen mekanism.
+Instrument till försäljning/tidigare sålda instrument har en egen mekanism.
 I directoryt `src/content/instruments` ligger filer, vilka var och en motsvarar ett
 instrument som kan komma att förekomma på siten.
 
