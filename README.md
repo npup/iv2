@@ -95,10 +95,9 @@ Bilderna som hör till dessa instrument skall ligga i directoryt
 
 Både filens namn och dess innehåll spelar roll:
 
-**Namnet**
+**Filnamnet**
 
-Namnet skall vara uppbyggt av två delar, och
-följa detta mönster:
+Filnamnet skall vara uppbyggt av två delar, och följa detta mönster:
 
     00042_conn10m-1938-utsökt.md
 
@@ -107,7 +106,7 @@ följa detta mönster:
 3. Nästa del av filnamnet (`conn10m-1938-utsökt`) skall vara något kort och fint som passar att synas i en URL (när man länkar) till sidor för dessa föremål.
 4. Filnamnet avslutas med `.md`, ty det är en markdownfil.
 
-**Innehållet**
+**Filens innehåll**
 
 Innehållet har följande delar (exempel):
 
