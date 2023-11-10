@@ -12,8 +12,8 @@
   "dependencies": {
     "@astrojs/mdx": "^1.0.0",
     "@astrojs/svelte": "^4.0.0",
-    "astro": "^3.0.4",
-    "css-to-go": "^1.7.1"
+    "astro": "^3.5.0",
+    "css-to-go": "^1.8.0"
   },
   "devDependencies": {
     "@vitejs/plugin-basic-ssl": "^1.0.1"
